@@ -1,232 +1,192 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Verificação de Segurança</title>
-    <!-- Google reCAPTCHA -->
-    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-            background: #f5f5f5;
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .verify-container {
-            background: white;
-            width: 100%;
-            max-width: 460px;
-            padding: 2rem 2rem 2rem 2rem;
-            border-radius: 8px;
-            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
-        }
-
-        .title {
-            font-size: 1.5rem;
-            font-weight: 600;
-            color: #1a1a1a;
-            margin-bottom: 0.5rem;
-            text-align: center;
-        }
-
-        .subtitle {
-            color: #666;
-            font-size: 0.9rem;
-            text-align: center;
-            margin-bottom: 1.5rem;
-        }
-
-        .divider {
-            border: none;
-            border-top: 1px solid #e0e0e0;
-            margin: 1rem 0 1.5rem 0;
-        }
-
-        .recaptcha-box {
-            background: #f9f9f9;
-            border: 1px solid #e0e0e0;
-            border-radius: 4px;
-            padding: 1rem;
-            margin: 1rem 0 1.5rem 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .btn-verify {
-            background: #1a73e8;
-            color: white;
-            border: none;
-            width: 100%;
-            padding: 12px;
-            font-size: 0.95rem;
-            font-weight: 500;
-            border-radius: 4px;
-            cursor: pointer;
-            transition: background 0.2s;
-        }
-
-        .btn-verify:hover:not(:disabled) {
-            background: #1557b0;
-        }
-
-        .btn-verify:disabled {
-            background: #dadce0;
-            cursor: not-allowed;
-            color: #5f6368;
-        }
-
-        .error-message {
-            color: #d93025;
-            font-size: 0.8rem;
-            margin-top: 0.8rem;
-            text-align: center;
-            display: none;
-        }
-
-        .error-message.show {
-            display: block;
-        }
-
-        .loading {
-            display: none;
-            text-align: center;
-            margin-top: 0.8rem;
-            font-size: 0.8rem;
-            color: #666;
-        }
-
-        .loading.show {
-            display: block;
-        }
-
-        .security-section {
-            margin-top: 2rem;
-            padding-top: 1.5rem;
-            border-top: 1px solid #e0e0e0;
-        }
-
-        .security-title {
-            font-size: 1rem;
-            font-weight: 600;
-            color: #1a1a1a;
-            margin-bottom: 1rem;
-            text-align: center;
-        }
-
-        .security-text {
-            font-size: 0.85rem;
-            color: #555;
-            margin: 0.6rem 0;
-            text-align: center;
-        }
-
-        .security-text i {
-            margin-right: 8px;
-            color: #1a73e8;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Verificação de Segurança</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      background: #f8fafc;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 40px 16px;
+    }
+    .card {
+      width: 100%;
+      max-width: 420px;
+      background: #fff;
+      border-radius: 16px;
+      padding: 32px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.06), 0 4px 12px rgba(0,0,0,0.04);
+    }
+    h1 {
+      text-align: center;
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: #1e293b;
+    }
+    .subtitle {
+      text-align: center;
+      font-size: 0.875rem;
+      color: #64748b;
+      margin-top: 8px;
+    }
+    .check-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 24px;
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+      background: #f8fafc;
+      padding: 16px;
+    }
+    .check-label {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      cursor: pointer;
+      user-select: none;
+    }
+    .checkbox {
+      width: 24px;
+      height: 24px;
+      border: 2px solid #cbd5e1;
+      border-radius: 4px;
+      background: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s;
+    }
+    .checkbox.checked {
+      border-color: #16a34a;
+      background: #f0fdf4;
+    }
+    .checkbox svg {
+      width: 16px;
+      height: 16px;
+      color: #16a34a;
+    }
+    .check-text {
+      font-size: 0.875rem;
+      color: #334155;
+    }
+    .recaptcha {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      font-size: 10px;
+      line-height: 1.2;
+      color: #64748b;
+    }
+    .recaptcha svg {
+      width: 28px;
+      height: 28px;
+      color: #3b82f6;
+    }
+    .recaptcha strong {
+      color: #475569;
+      font-weight: 600;
+      margin-top: 4px;
+    }
+    .secure {
+      text-align: center;
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: #16a34a;
+      margin-top: 24px;
+    }
+    .info-list {
+      margin-top: 12px;
+      text-align: center;
+      font-size: 0.875rem;
+      color: #475569;
+      list-style: none;
+    }
+    .info-list li + li { margin-top: 6px; }
+    .redirecting {
+      display: none;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      margin-top: 20px;
+      font-size: 0.875rem;
+      color: #2563eb;
+    }
+    .redirecting.active { display: flex; }
+    .spinner {
+      width: 16px;
+      height: 16px;
+      border: 2px solid #bfdbfe;
+      border-top-color: #2563eb;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+  </style>
 </head>
 <body>
-    <div class="verify-container">
-        <h1 class="title">Verificação de Segurança</h1>
-        <p class="subtitle">Confirme que você é humano para continuar</p>
+  <div class="card">
+    <h1>Verificação de Segurança</h1>
+    <p class="subtitle">Confirme que você é humano para continuar</p>
 
-        <hr class="divider">
-
-        <!-- Área do reCAPTCHA -->
-        <div class="recaptcha-box">
-            <!-- ⚠️ TROQUE A CHAVE ABAIXO PELA SUA SITE KEY DO GOOGLE -->
-            <div class="g-recaptcha" data-sitekey="6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI" data-callback="onRecaptchaSuccess" data-expired-callback="onRecaptchaExpired"></div>
+    <div class="check-row">
+      <label class="check-label" id="checkLabel">
+        <div class="checkbox" id="checkbox">
+          <svg id="checkIcon" style="display:none" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
         </div>
+        <span class="check-text">Não sou um robô</span>
+      </label>
 
-        <button id="verifyBtn" class="btn-verify" disabled>
-            Verificar e Acessar
-        </button>
-
-        <div id="errorMessage" class="error-message">
-            ⚠️ Por favor, marque "Não sou um robô" para continuar.
-        </div>
-
-        <div id="loading" class="loading">
-            <i class="fas fa-spinner fa-spin"></i> Verificando, redirecionando...
-        </div>
-
-        <!-- Seção Ambiente seguro e protegido -->
-        <div class="security-section">
-            <h3 class="security-title">Ambiente seguro e protegido</h3>
-            <p class="security-text">
-                <i class="fas fa-shield-alt"></i> Isso ajuda a proteger o sistema contra acessos indevidos
-            </p>
-            <p class="security-text">
-                <i class="fas fa-clock"></i> Verificação automática de segurança em tempo real
-            </p>
-            <p class="security-text">
-                <i class="fas fa-robot"></i> Proteção avançada contra bots e ataques
-            </p>
-        </div>
+      <div class="recaptcha">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-6.219-8.56"/></svg>
+        <strong>reCAPTCHA</strong>
+        <span>Privacidade - Termos</span>
+      </div>
     </div>
 
-    <!-- Font Awesome para os ícones -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <p class="secure">Ambiente seguro e protegido</p>
 
-    <script>
-        let recaptchaVerified = false;
+    <ul class="info-list">
+      <li>Isso ajuda a proteger o sistema contra acessos indevidos</li>
+      <li>Verificação automática de segurança em tempo real</li>
+      <li>Proteção avançada contra bots e ataques</li>
+    </ul>
 
-        window.onRecaptchaSuccess = function(token) {
-            recaptchaVerified = true;
-            const verifyBtn = document.getElementById('verifyBtn');
-            verifyBtn.disabled = false;
-            document.getElementById('errorMessage').classList.remove('show');
-        };
+    <div class="redirecting" id="redirecting">
+      <div class="spinner"></div>
+      <span>Redirecionando para o site...</span>
+    </div>
+  </div>
 
-        window.onRecaptchaExpired = function() {
-            recaptchaVerified = false;
-            const verifyBtn = document.getElementById('verifyBtn');
-            verifyBtn.disabled = true;
-        };
+  <script>
+    const REDIRECT_URL = "https://www.google.com";
 
-        document.getElementById('verifyBtn').addEventListener('click', function() {
-            if (!recaptchaVerified) {
-                document.getElementById('errorMessage').classList.add('show');
-                return;
-            }
+    const checkbox = document.getElementById('checkbox');
+    const checkIcon = document.getElementById('checkIcon');
+    const redirecting = document.getElementById('redirecting');
+    let checked = false;
 
-            const loading = document.getElementById('loading');
-            const verifyBtn = this;
-            verifyBtn.disabled = true;
-            loading.classList.add('show');
-
-            sessionStorage.setItem('slyce_recaptcha_verified', 'true');
-            sessionStorage.setItem('slyce_recaptcha_time', Date.now());
-
-            setTimeout(function() {
-                window.location.href = 'index.html';
-            }, 1500);
-        });
-
-        const alreadyVerified = sessionStorage.getItem('slyce_recaptcha_verified');
-        const verifyTime = sessionStorage.getItem('slyce_recaptcha_time');
-
-        if (alreadyVerified === 'true' && verifyTime) {
-            const timePassed = Date.now() - parseInt(verifyTime);
-            if (timePassed < 7200000) {
-                window.location.href = 'index.html';
-            } else {
-                sessionStorage.removeItem('slyce_recaptcha_verified');
-                sessionStorage.removeItem('slyce_recaptcha_time');
-            }
-        }
-    </script>
+    document.getElementById('checkLabel').addEventListener('click', function() {
+      checked = !checked;
+      if (checked) {
+        checkbox.classList.add('checked');
+        checkIcon.style.display = 'block';
+        redirecting.classList.add('active');
+        setTimeout(function() {
+          window.location.href = REDIRECT_URL;
+        }, 1500);
+      } else {
+        checkbox.classList.remove('checked');
+        checkIcon.style.display = 'none';
+        redirecting.classList.remove('active');
+      }
+    });
+  </script>
 </body>
 </html>
