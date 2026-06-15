@@ -5,53 +5,47 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <title>Slyce Artigos Esportivos | Equipamentos de Alta Performance</title>
     
-    <!-- Bootstrap 5 + Icons + Custom CSS -->
+    <!-- Bootstrap 5 + Icons + Google Fonts -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
     
+    <!-- Google reCAPTCHA -->
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    
+    <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48Y2lyY2xlIGN4PSI1MCIgY3k9IjUwIiByPSI0OCIgZmlsbD0iIzFlMjczMiIgc3Ryb2tlPSIjZmY0NDAwIiBzdHJva2Utd2lkdGg9IjMiLz48cGF0aCBkPSJNMzAgMzBoMTB2MTBIMzB6TTUwIDIwaDEwdjQwSDUweiIgZmlsbD0iI2ZmNjQwMCIvPjxjaXJjbGUgY3g9IjcwIiBjeT0iNjAiIHI9IjgiIGZpbGw9IiNmZmZmZmYiLz48cGF0aCBkPSJNMzUgNTUgMTUgNzAiIHN0cm9rZT0iI2ZmNjQwMCIgc3Ryb2tlLXdpZHRoPSI0IiBzdHJva2UtbGluZWNhcD0icm91bmQiLz48dGV4dCB4PSI1MCIgeT0iOTAiIGZvbnQtc2l6ZT0iMTgiIGZvbnQtZmFtaWx5PSdBcmlhbCcgZmlsbD0iI2ZmZmZmZiIgdGV4dC1hbmNob3I9Im1pZGRsZSI+U0xZPC90ZXh0Pjwvc3ZnPg==">
-    <link rel="icon" type="image/png" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAABkCAYAAABw4pVUAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAAZdEVYdFNvZnR3YXJlAHBhaW50Lm5ldCA0LjAuMTM0A1t6AAAAVElEQVR4Xu3QAQ0AIAwDMAz9/6VIFlBABgehSI0dM0cCAQECBAgQIECAAAECBAgQIECAAAECBAgQIECAAAECBAgQIECAAAECBAgQIDAEFvcGCKmg6hEH2ZQAAAAASUVORK5CYII=">
     
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: 'Inter', sans-serif; background: #F9F9FC; color: #1A1F2C; scroll-behavior: smooth; }
         h1, h2, h3, h4, .brand-font { font-family: 'Rajdhani', 'Inter', sans-serif; font-weight: 700; letter-spacing: -0.02em; }
-        :root { --primary: #FF5E14; --primary-dark: #E64A00; --secondary: #1E293B; --dark-bg: #0F172A; --gray-light: #F1F5F9; --success: #10B981; }
+        :root { --primary: #FF5E14; --primary-dark: #E64A00; --secondary: #1E293B; }
         
         .btn-primary-custom { background-color: var(--primary); border: none; color: white; font-weight: 600; padding: 10px 24px; border-radius: 40px; transition: all 0.3s ease; box-shadow: 0 4px 8px rgba(255,94,20,0.2); }
-        .btn-primary-custom:hover { background-color: var(--primary-dark); transform: translateY(-2px); box-shadow: 0 8px 18px rgba(255,94,20,0.3); }
-        .navbar-custom { background: rgba(15, 23, 42, 0.96); backdrop-filter: blur(8px); box-shadow: 0 2px 15px rgba(0,0,0,0.05); border-bottom: 2px solid var(--primary); }
+        .btn-primary-custom:hover { background-color: var(--primary-dark); transform: translateY(-2px); }
+        .navbar-custom { background: rgba(15, 23, 42, 0.96); backdrop-filter: blur(8px); border-bottom: 2px solid var(--primary); }
         .nav-link-custom { color: #F8FAFC !important; font-weight: 600; margin: 0 8px; transition: 0.2s; }
         .nav-link-custom:hover { color: var(--primary) !important; }
         .hero-section { background: linear-gradient(107deg, #0B1121 0%, #1A2A3A 100%); color: white; padding: 100px 0 80px; position: relative; overflow: hidden; }
-        .hero-section::before { content: "⚽🏀🎾"; font-size: 280px; opacity: 0.04; position: absolute; bottom: -20px; right: 0; pointer-events: none; white-space: nowrap; }
+        .hero-section::before { content: "⚽🏀🎾"; font-size: 280px; opacity: 0.04; position: absolute; bottom: -20px; right: 0; pointer-events: none; }
         .info-card { background: white; border-radius: 28px; box-shadow: 0 20px 35px -12px rgba(0,0,0,0.08); transition: all 0.25s ease-in-out; border: 1px solid rgba(0,0,0,0.03); }
-        .info-card:hover { transform: translateY(-5px); box-shadow: 0 25px 40px -12px rgba(0,0,0,0.15); }
+        .info-card:hover { transform: translateY(-5px); }
         .section-title { position: relative; display: inline-block; font-weight: 800; font-size: 2.4rem; }
         .section-title:after { content: ''; position: absolute; bottom: -12px; left: 0; width: 70px; height: 4px; background: var(--primary); border-radius: 4px; }
         .icon-circle { width: 72px; height: 72px; background: rgba(255,94,20,0.12); border-radius: 60px; display: flex; align-items: center; justify-content: center; margin-bottom: 1.2rem; color: var(--primary); font-size: 32px; }
         .badge-sport { background: var(--primary); color: white; padding: 5px 15px; border-radius: 50px; font-weight: 600; font-size: 0.8rem; }
         
-        /* Estilos do reCAPTCHA personalizado */
-        .recaptcha-container { background: #f9f9fc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 12px 16px; transition: all 0.3s ease; }
-        .recaptcha-checkbox { width: 24px; height: 24px; border: 2px solid #cbd5e1; border-radius: 4px; background: white; cursor: pointer; transition: all 0.2s; display: inline-flex; align-items: center; justify-content: center; }
-        .recaptcha-checkbox.checked { background: var(--primary); border-color: var(--primary); }
-        .recaptcha-checkbox.checked i { color: white; font-size: 14px; }
-        .recaptcha-checkbox:hover { border-color: var(--primary); }
-        .recaptcha-badge { font-size: 12px; color: #64748b; }
-        .recaptcha-badge a { color: var(--primary); text-decoration: none; }
-        .recaptcha-verified { background: #dcfce7; border-color: #86efac; }
-        
         footer { background: #0C111D; color: #CBD5E1; border-top: 3px solid var(--primary); }
         .whatsapp-float { position: fixed; bottom: 30px; right: 30px; background-color: #25D366; color: white; width: 58px; height: 58px; border-radius: 50%; text-align: center; font-size: 32px; line-height: 58px; z-index: 1000; box-shadow: 0 4px 15px rgba(0,0,0,0.2); transition: 0.2s; }
         .whatsapp-float:hover { background-color: #128C7E; transform: scale(1.05); color: white; }
+        
         @media (max-width: 768px) { .hero-section { padding: 60px 0 50px; } .section-title { font-size: 1.8rem; } }
     </style>
 </head>
 <body>
 
-<a href="https://wa.me/5511971602243?text=Olá!%20Gostaria%20de%20mais%20informações%20sobre%20os%20produtos%20esportivos%20Slyce." class="whatsapp-float" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp"></i></a>
+<a href="https://wa.me/5511971602243?text=Olá!%20Gostaria%20de%20mais%20informações%20sobre%20os%20produtos%20esportivos%20Slyce." class="whatsapp-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
 
 <nav class="navbar navbar-expand-lg navbar-custom fixed-top py-3">
     <div class="container">
@@ -170,7 +164,7 @@
     </div>
 </section>
 
-<!-- SEÇÃO DE CONTATO COM RECAPTCHA -->
+<!-- SEÇÃO DE CONTATO COM RECAPTCHA OFICIAL -->
 <section id="contato" class="py-5 position-relative" style="background: linear-gradient(120deg, #0F172A 0%, #111827 100%);">
     <div class="container">
         <div class="row g-5">
@@ -184,41 +178,25 @@
             <div class="col-lg-7">
                 <div class="info-card p-4 p-md-5 bg-white rounded-4 shadow-lg">
                     <h3 class="fw-bold mb-4"><i class="fas fa-envelope-open-text text-primary me-2"></i> Fale com a Slyce</h3>
-                    <form id="contactForm">
+                    
+                    <form id="contactForm" action="https://formspree.io/f/xgvornnr" method="POST">
                         <div class="row g-3">
                             <div class="col-md-6">
                                 <label class="form-label fw-semibold">Nome completo *</label>
-                                <input type="text" id="nome" class="form-control" required>
+                                <input type="text" name="nome" id="nome" class="form-control" required>
                             </div>
                             <div class="col-md-6">
                                 <label class="form-label fw-semibold">E-mail *</label>
-                                <input type="email" id="email" class="form-control" required>
+                                <input type="email" name="email" id="email" class="form-control" required>
                             </div>
                             <div class="col-12">
                                 <label class="form-label fw-semibold">Mensagem *</label>
-                                <textarea id="mensagem" rows="3" class="form-control" required></textarea>
+                                <textarea name="mensagem" id="mensagem" rows="3" class="form-control" required></textarea>
                             </div>
                             
-                            <!-- RECAPTCHA PERSONALIZADO -->
+                            <!-- GOOGLE RECAPTCHA OFICIAL - "NÃO SOU UM ROBÔ" -->
                             <div class="col-12 mt-2">
-                                <div id="recaptchaContainer" class="recaptcha-container d-flex align-items-center justify-content-between flex-wrap gap-3">
-                                    <div class="d-flex align-items-center gap-3">
-                                        <div id="recaptchaCheckbox" class="recaptcha-checkbox d-flex align-items-center justify-content-center">
-                                            <i class="fas fa-check" style="font-size: 12px; display: none;"></i>
-                                        </div>
-                                        <div>
-                                            <span class="fw-semibold" id="recaptchaLabel">Não sou um robô</span>
-                                            <div class="recaptcha-badge">
-                                                <i class="fas fa-shield-alt me-1"></i> 
-                                                <span>reCAPTCHA</span> 
-                                                <span>Privacidade - Termos</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div id="recaptchaStatus" class="text-success small">
-                                        <i class="fas fa-lock"></i> Ambiente seguro
-                                    </div>
-                                </div>
+                                <div class="g-recaptcha" data-sitekey="6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"></div>
                                 <div id="recaptchaError" class="text-danger small mt-2" style="display: none;">
                                     <i class="fas fa-exclamation-triangle me-1"></i> Por favor, confirme que você não é um robô.
                                 </div>
@@ -271,75 +249,33 @@
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 <script>
-    // Sistema de reCAPTCHA personalizado
-    let recaptchaVerified = false;
-    const recaptchaCheckbox = document.getElementById('recaptchaCheckbox');
-    const recaptchaContainer = document.getElementById('recaptchaContainer');
-    const recaptchaError = document.getElementById('recaptchaError');
-    const checkIcon = recaptchaCheckbox.querySelector('i');
-    
-    // Função para simular verificação do reCAPTCHA
-    function toggleRecaptcha() {
-        if (!recaptchaVerified) {
-            // Simula verificação (clique do usuário)
-            recaptchaVerified = true;
-            recaptchaCheckbox.classList.add('checked');
-            if (checkIcon) checkIcon.style.display = 'flex';
-            recaptchaContainer.classList.add('recaptcha-verified');
-            recaptchaError.style.display = 'none';
-            
-            // Animação de sucesso
-            const statusDiv = document.getElementById('recaptchaStatus');
-            if (statusDiv) {
-                statusDiv.innerHTML = '<i class="fas fa-check-circle"></i> Verificado com sucesso!';
-                statusDiv.classList.add('text-success');
-            }
-        } else {
-            // Reset (opcional - para testes)
-            recaptchaVerified = false;
-            recaptchaCheckbox.classList.remove('checked');
-            if (checkIcon) checkIcon.style.display = 'none';
-            recaptchaContainer.classList.remove('recaptcha-verified');
-            
-            const statusDiv = document.getElementById('recaptchaStatus');
-            if (statusDiv) {
-                statusDiv.innerHTML = '<i class="fas fa-lock"></i> Ambiente seguro';
-            }
-        }
-    }
-    
-    // Evento de clique no checkbox
-    recaptchaCheckbox.addEventListener('click', toggleRecaptcha);
-    
-    // Validação do formulário com reCAPTCHA
+    // Validação do reCAPTCHA antes de enviar o formulário
     document.getElementById('contactForm').addEventListener('submit', function(e) {
         e.preventDefault();
         
-        // Verifica se o reCAPTCHA foi marcado
-        if (!recaptchaVerified) {
-            recaptchaError.style.display = 'block';
-            recaptchaContainer.style.border = '1px solid #dc2626';
-            setTimeout(() => {
-                recaptchaContainer.style.border = '1px solid #e2e8f0';
-            }, 2000);
+        // Verifica se o reCAPTCHA foi preenchido
+        const recaptchaResponse = grecaptcha.getResponse();
+        
+        if (recaptchaResponse.length === 0) {
+            document.getElementById('recaptchaError').style.display = 'block';
             return;
         }
         
-        // Se passou pelo reCAPTCHA, mostra mensagem de sucesso
-        recaptchaError.style.display = 'none';
-        alert('✅ Mensagem enviada com sucesso! (reCAPTCHA verificado)\n\nEm breve nosso time retornará. Obrigado, Slyce Sports!');
-        this.reset();
+        // Esconde mensagem de erro se existir
+        document.getElementById('recaptchaError').style.display = 'none';
         
-        // Reseta o reCAPTCHA após envio
-        recaptchaVerified = false;
-        recaptchaCheckbox.classList.remove('checked');
-        if (checkIcon) checkIcon.style.display = 'none';
-        recaptchaContainer.classList.remove('recaptcha-verified');
-        const statusDiv = document.getElementById('recaptchaStatus');
-        if (statusDiv) statusDiv.innerHTML = '<i class="fas fa-lock"></i> Ambiente seguro';
+        // Se o reCAPTCHA está OK, envia o formulário
+        alert('✅ Mensagem enviada com sucesso!\n\nEm breve nosso time retornará. Obrigado, Slyce Sports!');
+        
+        // Opcional: enviar via AJAX ou submit normal
+        // this.submit();
+        
+        // Limpa o formulário e reseta o reCAPTCHA
+        this.reset();
+        grecaptcha.reset();
     });
     
-    // Smooth scroll
+    // Smooth scroll para links internos
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
             const href = this.getAttribute('href');
