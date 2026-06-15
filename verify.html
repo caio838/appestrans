@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Verificação de Segurança</title>
+    <!-- Google reCAPTCHA - API correta -->
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
     <style>
         * {
@@ -13,8 +14,8 @@
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-            background: #f5f5f5;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+            background: #f1f1f1;
             min-height: 100vh;
             display: flex;
             align-items: center;
@@ -24,35 +25,37 @@
         .verify-box {
             background: white;
             width: 100%;
-            max-width: 420px;
+            max-width: 400px;
             padding: 2rem;
             border-radius: 8px;
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
             text-align: center;
         }
 
         .title {
-            font-size: 1.4rem;
+            font-size: 1.3rem;
             font-weight: 600;
-            color: #1a1a1a;
+            color: #202124;
             margin-bottom: 0.5rem;
         }
 
         .subtitle {
-            color: #666;
+            color: #5f6368;
             font-size: 0.85rem;
-            margin-bottom: 1.8rem;
+            margin-bottom: 1.5rem;
         }
 
-        .recaptcha-area {
-            background: #f9f9f9;
-            border: 1px solid #e0e0e0;
-            border-radius: 4px;
-            padding: 1rem;
-            margin: 1.5rem 0;
+        hr {
+            border: none;
+            border-top: 1px solid #dadce0;
+            margin: 1rem 0;
+        }
+
+        .recaptcha-wrapper {
             display: flex;
             justify-content: center;
-            align-items: center;
+            margin: 1.5rem 0;
+            min-height: 80px;
         }
 
         .btn-verify {
@@ -61,7 +64,7 @@
             border: none;
             width: 100%;
             padding: 12px;
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             font-weight: 500;
             border-radius: 4px;
             cursor: pointer;
@@ -73,12 +76,13 @@
         }
 
         .btn-verify:disabled {
-            background: #ccc;
+            background: #dadce0;
             cursor: not-allowed;
+            color: #5f6368;
         }
 
         .error-message {
-            color: #d32f2f;
+            color: #d93025;
             font-size: 0.75rem;
             margin-top: 0.8rem;
             display: none;
@@ -92,7 +96,7 @@
             display: none;
             margin-top: 0.8rem;
             font-size: 0.75rem;
-            color: #666;
+            color: #5f6368;
         }
 
         .loading.show {
@@ -100,24 +104,20 @@
         }
 
         .security-footer {
-            margin-top: 1.8rem;
-            padding-top: 1.2rem;
-            border-top: 1px solid #eee;
+            margin-top: 1.5rem;
+            padding-top: 1rem;
+            border-top: 1px solid #dadce0;
         }
 
         .security-footer p {
-            font-size: 0.75rem;
-            color: #888;
-            margin: 0.5rem 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 6px;
+            font-size: 0.7rem;
+            color: #5f6368;
+            margin: 0.4rem 0;
         }
 
         .security-footer i {
+            margin-right: 4px;
             color: #1a73e8;
-            font-size: 0.7rem;
         }
     </style>
 </head>
@@ -126,12 +126,11 @@
         <h1 class="title">Verificação de Segurança</h1>
         <p class="subtitle">Confirme que você é humano para continuar</p>
 
-        <!-- LINHA SEPARADORA FINA -->
-        <hr style="border: none; border-top: 1px solid #e0e0e0; margin: 0 0 1.5rem 0;">
+        <hr>
 
-        <div class="recaptcha-area">
-            <!-- ⚠️ TROQUE "SUA_CHAVE_AQUI" PELA SUA SITE KEY DO GOOGLE -->
-            <div class="g-recaptcha" data-sitekey="SUA_CHAVE_AQUI" data-callback="onRecaptchaSuccess" data-expired-callback="onRecaptchaExpired"></div>
+        <div class="recaptcha-wrapper">
+            <!-- ⚠️ IMPORTANTE: Para remover o aviso, cadastre seu site no Google e cole sua SITE KEY aqui -->
+            <div class="g-recaptcha" data-sitekey="6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI" data-callback="onRecaptchaSuccess" data-expired-callback="onRecaptchaExpired"></div>
         </div>
 
         <button id="verifyBtn" class="btn-verify" disabled>
@@ -139,11 +138,11 @@
         </button>
 
         <div id="errorMessage" class="error-message">
-            ⚠️ Por favor, marque "Não sou um robô" para continuar.
+            ⚠️ Marque "Não sou um robô" para continuar.
         </div>
 
         <div id="loading" class="loading">
-            <i class="fas fa-spinner fa-spin"></i> Verificando, redirecionando...
+            ⏳ Verificando, redirecionando...
         </div>
 
         <div class="security-footer">
