@@ -6,7 +6,6 @@
     <title>Slyce Artigos Esportivos</title>
     
     <style>
-        /* Tela de bloqueio/verificação */
         #securityOverlay {
             position: fixed;
             top: 0;
@@ -22,11 +21,7 @@
             color: white;
             text-align: center;
         }
-        
-        #securityOverlay.hide {
-            display: none;
-        }
-        
+        #securityOverlay.hide { display: none; }
         .lock-spinner {
             width: 60px;
             height: 60px;
@@ -36,22 +31,9 @@
             animation: spin 1s linear infinite;
             margin-bottom: 20px;
         }
-        
-        @keyframes spin {
-            to { transform: rotate(360deg); }
-        }
-        
-        .lock-title {
-            font-size: 1.2rem;
-            font-weight: 600;
-            margin-bottom: 8px;
-        }
-        
-        .lock-text {
-            font-size: 0.85rem;
-            color: #94A3B8;
-        }
-        
+        @keyframes spin { to { transform: rotate(360deg); } }
+        .lock-title { font-size: 1.2rem; font-weight: 600; margin-bottom: 8px; }
+        .lock-text { font-size: 0.85rem; color: #94A3B8; }
         .lock-button {
             margin-top: 20px;
             background: #FF5E14;
@@ -61,57 +43,204 @@
             border-radius: 50px;
             font-weight: 600;
             cursor: pointer;
-            transition: 0.2s;
         }
-        
-        .lock-button:hover {
-            background: #E64A00;
-        }
+        .lock-button:hover { background: #E64A00; }
+    </style>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; background: #F9F9FC; color: #1A1F2C; scroll-behavior: smooth; }
+        h1, h2, h3, h4 { font-family: 'Rajdhani', 'Inter', sans-serif; font-weight: 700; }
+        :root { --primary: #FF5E14; --primary-dark: #E64A00; }
+        .btn-primary-custom { background-color: var(--primary); border: none; color: white; font-weight: 600; padding: 10px 24px; border-radius: 40px; transition: all 0.3s ease; }
+        .btn-primary-custom:hover { background-color: var(--primary-dark); transform: translateY(-2px); }
+        .navbar-custom { background: rgba(15, 23, 42, 0.96); backdrop-filter: blur(8px); border-bottom: 2px solid var(--primary); }
+        .nav-link-custom { color: #F8FAFC !important; font-weight: 600; margin: 0 8px; }
+        .nav-link-custom:hover { color: var(--primary) !important; }
+        .hero-section { background: linear-gradient(107deg, #0B1121 0%, #1A2A3A 100%); color: white; padding: 100px 0 80px; position: relative; overflow: hidden; }
+        .hero-section::before { content: "⚽🏀🎾"; font-size: 280px; opacity: 0.04; position: absolute; bottom: -20px; right: 0; }
+        .info-card { background: white; border-radius: 28px; box-shadow: 0 20px 35px -12px rgba(0,0,0,0.08); transition: all 0.25s ease-in-out; }
+        .info-card:hover { transform: translateY(-5px); }
+        .section-title { position: relative; display: inline-block; font-weight: 800; font-size: 2.4rem; }
+        .section-title:after { content: ''; position: absolute; bottom: -12px; left: 0; width: 70px; height: 4px; background: var(--primary); border-radius: 4px; }
+        .icon-circle { width: 72px; height: 72px; background: rgba(255,94,20,0.12); border-radius: 60px; display: flex; align-items: center; justify-content: center; margin-bottom: 1.2rem; color: var(--primary); font-size: 32px; }
+        .badge-sport { background: var(--primary); color: white; padding: 5px 15px; border-radius: 50px; font-weight: 600; font-size: 0.8rem; }
+        footer { background: #0C111D; color: #CBD5E1; border-top: 3px solid var(--primary); }
+        .whatsapp-float { position: fixed; bottom: 30px; right: 30px; background-color: #25D366; color: white; width: 58px; height: 58px; border-radius: 50%; text-align: center; font-size: 32px; line-height: 58px; z-index: 1000; }
+        @media (max-width: 768px) { .hero-section { padding: 60px 0 50px; } .section-title { font-size: 1.8rem; } }
     </style>
 </head>
 <body>
 
-<!-- TELA DE VERIFICAÇÃO DE SEGURANÇA (BLOQUEIA O SITE SE NÃO VERIFICADO) -->
+<!-- TELA DE VERIFICAÇÃO DE SEGURANÇA -->
 <div id="securityOverlay">
     <div class="lock-spinner"></div>
-    <div class="lock-title">🔒 Verificando Segurança</div>
+    <div class="lock-title">🔒 Verificação de Segurança</div>
     <div class="lock-text">Protegendo contra bots e acessos não autorizados...</div>
-    <button id="goToVerifyBtn" class="lock-button">Ir para verificação →</button>
+    <button id="goToVerifyBtn" class="lock-button">Verificar identidade →</button>
 </div>
 
-<!-- TODO O RESTO DO SEU SITE AQUI (TODO CONTEÚDO ORIGINAL) -->
-
 <script>
-    // Verifica se o usuário passou pela página de verificação
-    const isVerified = sessionStorage.getItem('slyce_recaptcha_verified');
-    const verifyTime = sessionStorage.getItem('slyce_recaptcha_time');
-    const overlay = document.getElementById('securityOverlay');
-    
     function redirectToVerify() {
         window.location.href = 'verify.html';
     }
     
     document.getElementById('goToVerifyBtn').addEventListener('click', redirectToVerify);
     
+    const isVerified = sessionStorage.getItem('slyce_recaptcha_verified');
+    const verifyTime = sessionStorage.getItem('slyce_recaptcha_time');
+    const overlay = document.getElementById('securityOverlay');
+    
     if (isVerified === 'true' && verifyTime) {
         const timePassed = Date.now() - parseInt(verifyTime);
-        // Verificação válida por 2 horas (7200000 ms)
         if (timePassed < 7200000) {
-            // Usuário verificado, libera o site
             overlay.classList.add('hide');
         } else {
-            // Verificação expirada, vai para página de verificação
             sessionStorage.removeItem('slyce_recaptcha_verified');
             sessionStorage.removeItem('slyce_recaptcha_time');
             redirectToVerify();
         }
     } else {
-        // Não verificou ainda, redireciona para a página de verificação
         redirectToVerify();
     }
 </script>
 
-<!-- RESTANTE DO SEU CONTEÚDO ORIGINAL DO SITE AQUI -->
+<!-- CONTEÚDO DO SEU SITE -->
+<a href="https://wa.me/5511971602243" class="whatsapp-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
 
+<nav class="navbar navbar-expand-lg navbar-custom fixed-top py-3">
+    <div class="container">
+        <a class="navbar-brand text-white fw-bold fs-3" href="#"><i class="fas fa-futbol text-warning me-2"></i>Slyce<span class="text-primary"> Sports</span></a>
+        <button class="navbar-toggler bg-white" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"><span class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+            <ul class="navbar-nav gap-2">
+                <li class="nav-item"><a class="nav-link nav-link-custom" href="#home">Início</a></li>
+                <li class="nav-item"><a class="nav-link nav-link-custom" href="#sobre">Sobre</a></li>
+                <li class="nav-item"><a class="nav-link nav-link-custom" href="#diferenciais">Diferenciais</a></li>
+                <li class="nav-item"><a class="nav-link nav-link-custom" href="#contato">Contato</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<section id="home" class="hero-section">
+    <div class="container">
+        <div class="row align-items-center gy-5">
+            <div class="col-lg-6">
+                <span class="badge-sport d-inline-block mb-3"><i class="fas fa-bolt me-1"></i> Desde 2023 | Alta performance</span>
+                <h1 class="display-4 fw-bold mb-4">Sua evolução começa com <span class="text-primary">Slyce</span></h1>
+                <p class="lead mb-4">Artigos esportivos de elite para atletas reais. Equipamentos, vestuário e acessórios que potencializam cada movimento.</p>
+                <div class="d-flex gap-4 flex-wrap">
+                    <div><i class="fas fa-truck-fast text-primary me-2"></i> Entregas para todo Brasil</div>
+                    <div><i class="fas fa-shield-alt text-primary me-2"></i> Garantia Slyce</div>
+                </div>
+            </div>
+            <div class="col-lg-6 text-lg-end">
+                <img src="https://placehold.co/600x400/1E293B/FF5E14?text=Slyce+Sport" class="img-fluid rounded-4 shadow-lg" style="max-width: 90%;">
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="sobre" class="py-5">
+    <div class="container">
+        <div class="row g-5">
+            <div class="col-md-6">
+                <div class="info-card p-4 p-lg-5 h-100">
+                    <div class="icon-circle"><i class="fas fa-building"></i></div>
+                    <h3 class="fw-bold">Slyce Artigos Esportivos S.A.</h3>
+                    <p class="text-secondary">Inovação e qualidade para impulsionar sua jornada esportiva.</p>
+                    <hr>
+                    <p><i class="fas fa-calendar-alt text-primary me-2"></i> <strong>Data Cadastral:</strong> 02/10/2023</p>
+                    <p><i class="fas fa-id-card text-primary me-2"></i> <strong>CNPJ:</strong> 52.380.726/0001-09</p>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="info-card p-4 p-lg-5 h-100">
+                    <div class="icon-circle"><i class="fas fa-map-marker-alt"></i></div>
+                    <h3 class="fw-bold">Nossa Base</h3>
+                    <address>Avenida Nove de Julho, 5966<br>Jardim Paulista, São Paulo - SP<br>01406-902</address>
+                    <p><i class="fas fa-phone-alt text-primary me-2"></i> (11) 97160-2243</p>
+                    <p><i class="fas fa-envelope text-primary me-2"></i> contato@slycesports.com.br</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="diferenciais" class="py-5 bg-white">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h2 class="section-title">Diferenciais <span class="text-primary">Slyce</span></h2>
+        </div>
+        <div class="row g-4">
+            <div class="col-md-6 col-lg-3">
+                <div class="info-card text-center p-4">
+                    <div class="icon-circle mx-auto"><i class="fas fa-dumbbell"></i></div>
+                    <h4>Materiais Premium</h4>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3">
+                <div class="info-card text-center p-4">
+                    <div class="icon-circle mx-auto"><i class="fas fa-tachometer-alt"></i></div>
+                    <h4>Performance Térmica</h4>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3">
+                <div class="info-card text-center p-4">
+                    <div class="icon-circle mx-auto"><i class="fas fa-globe-americas"></i></div>
+                    <h4>Frete para todo BR</h4>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3">
+                <div class="info-card text-center p-4">
+                    <div class="icon-circle mx-auto"><i class="fas fa-headset"></i></div>
+                    <h4>Suporte 24h</h4>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="contato" class="py-5" style="background: linear-gradient(120deg, #0F172A 0%, #111827 100%);">
+    <div class="container">
+        <div class="row g-5">
+            <div class="col-lg-5 text-white">
+                <h2 class="fw-bold">Vamos <span class="text-primary">acelerar</span> seu jogo?</h2>
+                <p>Entre em contato, visite nossa loja física ou adquira online com segurança.</p>
+                <a href="https://wa.me/5511971602243" target="_blank" class="btn btn-primary-custom btn-lg"><i class="fab fa-whatsapp me-2"></i> (11) 97160-2243</a>
+            </div>
+            <div class="col-lg-7">
+                <div class="info-card p-4 p-md-5">
+                    <h3>Fale com a Slyce</h3>
+                    <form>
+                        <div class="row g-3">
+                            <div class="col-md-6"><input type="text" class="form-control" placeholder="Nome" required></div>
+                            <div class="col-md-6"><input type="email" class="form-control" placeholder="E-mail" required></div>
+                            <div class="col-12"><textarea rows="3" class="form-control" placeholder="Mensagem"></textarea></div>
+                            <div class="col-12"><button type="submit" class="btn btn-primary-custom w-100">Enviar</button></div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer class="pt-5 pb-4">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <p>© 2025 Slyce Artigos Esportivos S.A. | Todos os direitos reservados</p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
