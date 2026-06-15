@@ -1,1 +1,371 @@
-
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verificação de Segurança - Slyce Sports</title>
+    
+    <!-- Google Fonts + Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Google reCAPTCHA -->
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #0B1121 0%, #1A2A3A 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow-x: hidden;
+        }
+        
+        /* Fundo com ícones esportivos */
+        body::before {
+            content: "⚽🏀🎾🏐🏈⚾🥊🏓🏋️";
+            font-size: 200px;
+            opacity: 0.03;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            text-align: center;
+            pointer-events: none;
+            white-space: nowrap;
+            width: 100%;
+            font-family: monospace;
+        }
+        
+        .verify-container {
+            background: rgba(255, 255, 255, 0.98);
+            border-radius: 40px;
+            box-shadow: 0 30px 60px -20px rgba(0, 0, 0, 0.6);
+            max-width: 520px;
+            width: 90%;
+            padding: 2.5rem;
+            position: relative;
+            z-index: 10;
+            animation: fadeInUp 0.5s ease-out;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .logo-area {
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+        
+        .logo-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, #FF5E14, #E64A00);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            box-shadow: 0 10px 25px -5px rgba(255,94,20,0.4);
+        }
+        
+        .logo-icon i {
+            font-size: 32px;
+            color: white;
+        }
+        
+        .logo-text {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: #1E293B;
+        }
+        
+        .logo-text span {
+            color: #FF5E14;
+        }
+        
+        .title {
+            font-size: 1.6rem;
+            font-weight: 700;
+            text-align: center;
+            color: #0F172A;
+            margin-bottom: 0.5rem;
+        }
+        
+        .subtitle {
+            text-align: center;
+            color: #64748B;
+            margin-bottom: 2rem;
+            font-size: 0.9rem;
+        }
+        
+        .security-box {
+            background: #F8FAFC;
+            border-radius: 20px;
+            padding: 1.25rem;
+            margin: 1.5rem 0;
+        }
+        
+        .security-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 10px 0;
+            color: #334155;
+            font-size: 0.85rem;
+            border-bottom: 1px solid #E2E8F0;
+        }
+        
+        .security-item:last-child {
+            border-bottom: none;
+        }
+        
+        .security-item i {
+            width: 24px;
+            color: #10B981;
+            font-size: 1rem;
+        }
+        
+        .recaptcha-wrapper {
+            background: #FFFFFF;
+            border: 1px solid #E2E8F0;
+            border-radius: 16px;
+            padding: 1.25rem;
+            margin: 1.5rem 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100px;
+        }
+        
+        .btn-verify {
+            background: linear-gradient(135deg, #FF5E14, #E64A00);
+            border: none;
+            color: white;
+            font-weight: 700;
+            padding: 14px 28px;
+            border-radius: 50px;
+            width: 100%;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .btn-verify:hover:not(:disabled) {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(255,94,20,0.4);
+        }
+        
+        .btn-verify:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            background: #94A3B8;
+        }
+        
+        .error-message {
+            background: #FEF2F2;
+            border: 1px solid #FECACA;
+            border-radius: 12px;
+            padding: 12px;
+            margin-top: 1rem;
+            color: #DC2626;
+            font-size: 0.85rem;
+            display: none;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .error-message.show {
+            display: flex;
+        }
+        
+        .success-message {
+            background: #DCFCE7;
+            border: 1px solid #86EFAC;
+            border-radius: 12px;
+            padding: 12px;
+            margin-top: 1rem;
+            color: #166534;
+            font-size: 0.85rem;
+            display: none;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .success-message.show {
+            display: flex;
+        }
+        
+        .loading {
+            display: none;
+            text-align: center;
+            margin-top: 1rem;
+        }
+        
+        .loading.show {
+            display: block;
+        }
+        
+        .loading i {
+            color: #FF5E14;
+            font-size: 1.2rem;
+        }
+        
+        .footer-note {
+            text-align: center;
+            margin-top: 1.5rem;
+            font-size: 0.7rem;
+            color: #94A3B8;
+        }
+        
+        .footer-note a {
+            color: #FF5E14;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="verify-container">
+        <div class="logo-area">
+            <div class="logo-icon">
+                <i class="fas fa-shield-alt"></i>
+            </div>
+            <div class="logo-text">Slyce <span>Sports</span></div>
+        </div>
+        
+        <h1 class="title">Verificação de Segurança</h1>
+        <p class="subtitle">Confirme que você é humano para continuar</p>
+        
+        <div class="security-box">
+            <div class="security-item">
+                <i class="fas fa-check-circle"></i>
+                <span>Ambiente seguro e protegido</span>
+            </div>
+            <div class="security-item">
+                <i class="fas fa-shield-alt"></i>
+                <span>Proteção contra bots e ataques</span>
+            </div>
+            <div class="security-item">
+                <i class="fas fa-clock"></i>
+                <span>Verificação automática em tempo real</span>
+            </div>
+            <div class="security-item">
+                <i class="fas fa-robot"></i>
+                <span>Prevenção de spam e acesso indevido</span>
+            </div>
+        </div>
+        
+        <!-- Google reCAPTCHA -->
+        <div class="recaptcha-wrapper">
+            <div class="g-recaptcha" data-sitekey="6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI" data-callback="onRecaptchaSuccess" data-expired-callback="onRecaptchaExpired"></div>
+        </div>
+        
+        <button id="verifyBtn" class="btn-verify" disabled>
+            <i class="fas fa-check-circle me-2"></i> Verificar e Acessar Site
+        </button>
+        
+        <div id="errorMessage" class="error-message">
+            <i class="fas fa-exclamation-triangle"></i>
+            <span>⚠️ Por favor, marque "Não sou um robô" para continuar.</span>
+        </div>
+        
+        <div id="successMessage" class="success-message">
+            <i class="fas fa-check-circle"></i>
+            <span>✅ Verificado com sucesso! Redirecionando...</span>
+        </div>
+        
+        <div id="loading" class="loading">
+            <i class="fas fa-spinner fa-spin"></i> Verificando, aguarde...
+        </div>
+        
+        <div class="footer-note">
+            <i class="fas fa-lock"></i> Protegido por reCAPTCHA | <a href="#">Privacidade</a> - <a href="#">Termos</a>
+        </div>
+    </div>
+    
+    <script>
+        let recaptchaVerified = false;
+        
+        // Função chamada quando o reCAPTCHA é resolvido
+        window.onRecaptchaSuccess = function(token) {
+            recaptchaVerified = true;
+            const verifyBtn = document.getElementById('verifyBtn');
+            verifyBtn.disabled = false;
+            document.getElementById('errorMessage').classList.remove('show');
+            
+            // Muda visual do botão
+            verifyBtn.innerHTML = '<i class="fas fa-check-circle me-2"></i> ✅ Verificado! Clique para entrar';
+            verifyBtn.style.background = 'linear-gradient(135deg, #10B981, #059669)';
+        };
+        
+        // Função chamada quando o reCAPTCHA expira
+        window.onRecaptchaExpired = function() {
+            recaptchaVerified = false;
+            const verifyBtn = document.getElementById('verifyBtn');
+            verifyBtn.disabled = true;
+            verifyBtn.innerHTML = '<i class="fas fa-check-circle me-2"></i> Verificar e Acessar Site';
+            verifyBtn.style.background = 'linear-gradient(135deg, #FF5E14, #E64A00)';
+        };
+        
+        // Botão de verificação
+        document.getElementById('verifyBtn').addEventListener('click', function() {
+            if (!recaptchaVerified) {
+                document.getElementById('errorMessage').classList.add('show');
+                return;
+            }
+            
+            // Mostra loading e mensagem de sucesso
+            const loading = document.getElementById('loading');
+            const successMsg = document.getElementById('successMessage');
+            const verifyBtn = this;
+            
+            verifyBtn.disabled = true;
+            loading.classList.add('show');
+            successMsg.classList.add('show');
+            
+            // Salva no sessionStorage que o usuário já verificou
+            sessionStorage.setItem('slyce_recaptcha_verified', 'true');
+            sessionStorage.setItem('slyce_recaptcha_time', Date.now());
+            
+            // Redireciona para o site principal após 1.5 segundos
+            setTimeout(function() {
+                window.location.href = 'index.html';
+            }, 1500);
+        });
+        
+        // SE JÁ ESTIVER VERIFICADO, REDIRECIONA DIRETO PARA O SITE
+        const alreadyVerified = sessionStorage.getItem('slyce_recaptcha_verified');
+        const verifyTime = sessionStorage.getItem('slyce_recaptcha_time');
+        
+        if (alreadyVerified === 'true' && verifyTime) {
+            const timePassed = Date.now() - parseInt(verifyTime);
+            // Verificação válida por 2 horas
+            if (timePassed < 7200000) {
+                window.location.href = 'index.html';
+            } else {
+                // Limpa verificação expirada
+                sessionStorage.removeItem('slyce_recaptcha_verified');
+                sessionStorage.removeItem('slyce_recaptcha_time');
+            }
+        }
+    </script>
+</body>
+</html>
