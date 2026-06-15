@@ -1,658 +1,431 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <meta name="description" content="Slyce Artigos Esportivos - Equipamentos de alta performance para atletas reais. Loja especializada em artigos esportivos de qualidade.">
-    <title>Slyce Artigos Esportivos | Alta Performance</title>
+    <title>Slyce Artigos Esportivos | Performance e Estilo</title>
     
-    <!-- Bootstrap 5 CSS -->
+    <!-- Bootstrap 5 CSS + Icons + Custom CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Font Awesome Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <!-- Google Fonts para tipografia moderna -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
     
-    <!-- Favicon Personalizado Slyce Sports -->
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48Y2lyY2xlIGN4PSI1MCIgY3k9IjUwIiByPSI0OCIgZmlsbD0iI0ZGNUUxNCIgc3Ryb2tlPSIjRkZGRkZGIiBzdHJva2Utd2lkdGg9IjMiLz48cGF0aCBkPSJNMzUgMjVoMjB2MTBIMzV6TTUwIDIwaDEwdjUwSDUweiIgZmlsbD0iI0ZGRkZGRiIvPjxjaXJjbGUgY3g9IjY1IiBjeT0iNjAiIHI9IjgiIGZpbGw9IiNGRkZGRkYiLz48cGF0aCBkPSJNMzAgNTUgMTAgNzAiIHN0cm9rZT0iI0ZGRkZGRiIgc3Ryb2tlLXdpZHRoPSI0Ii8+PHRleHQgeD0iNTAiIHk9IjkwIiBmb250LXNpemU9IjE4IiBmb250LWZhbWlseT0nQXJpYWwnIGZpbGw9IiNGRkZGRkYiIHRleHQtYW5jaG9yPSJtaWRkbGUiPlNMWTwvdGV4dD48L3N2Zz4=">
-    <link rel="icon" type="image/png" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAABkCAYAAABw4pVUAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAAZdEVYdFNvZnR3YXJlAHBhaW50Lm5ldCA0LjAuMTM0A1t6AAAAVklEQVR4Xu3QAQ0AIAwDMAz9/6VIFlBABgehSI0dM0cCAQECBAgQIECAAAECBAgQIECAAAECBAgQIECAAAECBAgQIECAAAECBAgQIECAAIFh+AAUHKuhoF+RpAAAAABJRU5ErkJggg==">
+    <!-- Favicon (data:image/svg+xml base64) - escudo esportivo + Slyce -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48Y2lyY2xlIGN4PSI1MCIgY3k9IjUwIiByPSI0OCIgZmlsbD0iIzAwMDAwMCIvPjxwYXRoIGQ9Ik0zNSAyNWwyMC01IDUgMjBMMzUgNDV6IiBmaWxsPSIjZmZkYzAwIi8+PHBvbHlsaW5lIHBvaW50cz0iNTUgMjUgNzUgMzUgNjUgNTUgNDUgNDUiIHN0cm9rZT0iI2ZmNTAwMCIgc3Ryb2tlLXdpZHRoPSI0IiBmaWxsPSJub25lIi8+PHJlY3QgeD0iNDAiIHk9IjUwIiB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIGZpbGw9IiNmZmZmZmYiLz48Y2lyY2xlIGN4PSI1MCIgY3k9IjUwIiByPSI4IiBmaWxsPSIjZmZkYzAwIi8+PHRleHQgeD0iNTAiIHk9Ijc1IiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTgiIGZpbGw9IiNmZmZmZmYiIHRleHQtYW5jaG9yPSJtaWRkbGUiPlM8L3RleHQ+PC9zdmc+">
     
     <style>
         * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
             font-family: 'Inter', sans-serif;
-            background: #F8FAFC;
-            color: #0F172A;
+        }
+        body {
+            background: #f8f9fc;
             scroll-behavior: smooth;
         }
-        
-        h1, h2, h3, h4, h5, .brand-font {
-            font-family: 'Poppins', 'Inter', sans-serif;
-            font-weight: 700;
-            letter-spacing: -0.02em;
-        }
-        
-        :root {
-            --primary: #FF5E14;
-            --primary-dark: #E64A00;
-            --primary-light: #FF7A3A;
-            --secondary: #1E293B;
-            --dark: #0F172A;
-            --gray: #64748B;
-            --light-gray: #F1F5F9;
-            --success: #10B981;
-        }
-        
-        /* Custom Buttons */
-        .btn-primary-custom {
-            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-            border: none;
-            color: white;
-            font-weight: 600;
-            padding: 12px 32px;
-            border-radius: 50px;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(255,94,20,0.3);
-        }
-        
-        .btn-primary-custom:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(255,94,20,0.4);
-            background: linear-gradient(135deg, var(--primary-dark), var(--primary));
-            color: white;
-        }
-        
-        .btn-outline-custom {
-            border: 2px solid var(--primary);
-            background: transparent;
-            color: var(--primary);
-            font-weight: 600;
-            padding: 10px 28px;
-            border-radius: 50px;
-            transition: all 0.3s ease;
-        }
-        
-        .btn-outline-custom:hover {
-            background: var(--primary);
-            color: white;
-            transform: translateY(-2px);
-        }
-        
-        /* Navbar */
+        /* Navbar personalizada */
         .navbar-custom {
-            background: rgba(15, 23, 42, 0.95);
-            backdrop-filter: blur(10px);
-            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
-            padding: 15px 0;
-            transition: all 0.3s;
+            background: #0a0f1c;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.08);
         }
-        
-        .navbar-custom.scrolled {
-            padding: 10px 0;
+        .navbar-brand {
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            color: #ffffff !important;
+            font-size: 1.8rem;
         }
-        
-        .nav-link-custom {
-            color: #E2E8F0 !important;
+        .navbar-brand span {
+            color: #f7b32b;
+        }
+        .nav-link {
+            color: #e0e0e0 !important;
             font-weight: 500;
-            margin: 0 12px;
-            transition: 0.3s;
-            position: relative;
-        }
-        
-        .nav-link-custom:hover {
-            color: var(--primary) !important;
-        }
-        
-        .nav-link-custom::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--primary);
             transition: 0.3s;
         }
-        
-        .nav-link-custom:hover::after {
-            width: 100%;
+        .nav-link:hover {
+            color: #f7b32b !important;
         }
-        
-        /* Hero Section */
-        .hero-section {
-            background: linear-gradient(135deg, #0F172A 0%, #1E293B 50%, #0F172A 100%);
+        .btn-slyce {
+            background: #f7b32b;
+            color: #0a0f1c;
+            font-weight: 700;
+            border-radius: 40px;
+            padding: 8px 24px;
+            transition: 0.2s;
+            border: none;
+        }
+        .btn-slyce:hover {
+            background: #ffca4d;
+            transform: scale(1.02);
+            color: #000;
+        }
+        /* hero section */
+        .hero {
+            background: linear-gradient(135deg, #101624 0%, #1b2335 100%);
             color: white;
-            padding: 150px 0 100px;
-            position: relative;
-            overflow: hidden;
+            padding: 80px 0;
+            border-bottom: 5px solid #f7b32b;
         }
-        
-        .hero-section::before {
-            content: "⚽🏀🎾🏐🏈⚾🥊🏓";
-            font-size: 300px;
-            opacity: 0.03;
-            position: absolute;
-            bottom: -50px;
-            right: -50px;
-            pointer-events: none;
-            white-space: nowrap;
+        .hero h1 {
+            font-weight: 800;
+            font-size: 3rem;
         }
-        
-        .hero-section::after {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: radial-gradient(circle at 20% 50%, rgba(255,94,20,0.1), transparent 70%);
-            pointer-events: none;
+        .hero .highlight {
+            color: #f7b32b;
         }
-        
-        /* Cards */
-        .info-card {
-            background: white;
-            border-radius: 24px;
-            padding: 2rem;
-            box-shadow: 0 20px 35px -12px rgba(0,0,0,0.08);
-            transition: all 0.3s ease;
-            border: 1px solid rgba(0,0,0,0.03);
-            height: 100%;
-        }
-        
-        .info-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 25px 40px -12px rgba(0,0,0,0.15);
-        }
-        
-        .icon-circle {
-            width: 70px;
-            height: 70px;
-            background: linear-gradient(135deg, rgba(255,94,20,0.12), rgba(255,94,20,0.05));
-            border-radius: 50%;
-            display: flex;
+        /* ícones de destaque */
+        .feature-icon {
+            font-size: 2.8rem;
+            background: #f7b32b20;
+            color: #f7b32b;
+            width: 80px;
+            height: 80px;
+            display: inline-flex;
             align-items: center;
             justify-content: center;
-            margin-bottom: 1.5rem;
-            color: var(--primary);
-            font-size: 32px;
+            border-radius: 50%;
+            transition: 0.2s;
         }
-        
+        .card-sport {
+            border: none;
+            border-radius: 28px;
+            box-shadow: 0 12px 28px rgba(0,0,0,0.05);
+            transition: all 0.25s ease;
+            background: white;
+        }
+        .card-sport:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 20px 30px rgba(0,0,0,0.1);
+        }
         .section-title {
+            font-weight: 800;
             position: relative;
             display: inline-block;
-            font-weight: 800;
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
         }
-        
         .section-title:after {
             content: '';
             position: absolute;
-            bottom: -12px;
-            left: 0;
-            width: 70px;
+            width: 60%;
             height: 4px;
-            background: var(--primary);
+            background: #f7b32b;
+            bottom: -12px;
+            left: 20%;
             border-radius: 4px;
         }
-        
-        .section-title-center:after {
-            left: 50%;
-            transform: translateX(-50%);
-        }
-        
-        .badge-sport {
-            background: var(--primary);
-            color: white;
-            padding: 6px 18px;
-            border-radius: 50px;
-            font-weight: 600;
-            font-size: 0.8rem;
-            display: inline-block;
-        }
-        
-        /* Product Card */
-        .product-card {
+        .info-card {
             background: white;
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: 0 10px 25px -5px rgba(0,0,0,0.05);
-            transition: all 0.3s;
-            height: 100%;
+            border-radius: 24px;
+            border-left: 6px solid #f7b32b;
         }
-        
-        .product-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 35px -10px rgba(0,0,0,0.1);
-        }
-        
-        .product-img {
-            background: linear-gradient(135deg, #1E293B, #0F172A);
-            padding: 2rem;
-            text-align: center;
-        }
-        
-        .product-img i {
-            font-size: 4rem;
-            color: var(--primary);
-        }
-        
-        /* Footer */
         footer {
-            background: #0F172A;
-            color: #CBD5E1;
-            border-top: 3px solid var(--primary);
+            background: #0a0f1c;
+            color: #adb5bd;
         }
-        
-        /* WhatsApp Float */
-        .whatsapp-float {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            background-color: #25D366;
-            color: white;
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            text-align: center;
-            font-size: 32px;
-            line-height: 60px;
-            z-index: 1000;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-            transition: 0.3s;
+        .social-icons a {
+            color: #f7b32b;
+            font-size: 1.8rem;
+            margin: 0 12px;
+            transition: 0.2s;
         }
-        
-        .whatsapp-float:hover {
-            background-color: #128C7E;
-            transform: scale(1.08);
+        .social-icons a:hover {
             color: white;
         }
-        
-        /* Responsive */
+        .btn-outline-light-custom {
+            border: 1px solid #f7b32b;
+            color: #f7b32b;
+            border-radius: 40px;
+            padding: 6px 18px;
+            transition: 0.2s;
+        }
+        .btn-outline-light-custom:hover {
+            background: #f7b32b;
+            color: #0a0f1c;
+        }
+        .contact-info i {
+            color: #f7b32b;
+            width: 32px;
+            font-size: 1.3rem;
+        }
+        .bg-soft-dark {
+            background: #f0f2f8;
+        }
         @media (max-width: 768px) {
-            .hero-section {
-                padding: 120px 0 60px;
-            }
-            .section-title {
-                font-size: 1.8rem;
-            }
-            .whatsapp-float {
-                width: 50px;
-                height: 50px;
-                font-size: 28px;
-                line-height: 50px;
-                bottom: 20px;
-                right: 20px;
+            .hero h1 {
+                font-size: 2.2rem;
             }
         }
     </style>
 </head>
 <body>
 
-<!-- WhatsApp Flutuante -->
-<a href="https://wa.me/5511971602243?text=Olá!%20Gostaria%20de%20mais%20informações%20sobre%20os%20produtos%20Slyce." 
-   class="whatsapp-float" target="_blank" rel="noopener noreferrer">
-    <i class="fab fa-whatsapp"></i>
-</a>
-
-<!-- Navbar -->
-<nav class="navbar navbar-expand-lg navbar-custom fixed-top">
-    <div class="container">
-        <a class="navbar-brand text-white fw-bold fs-2" href="#" style="font-family: 'Poppins', sans-serif;">
-            <i class="fas fa-futbol text-primary me-2"></i>Slyce<span class="text-primary">Sports</span>
-        </a>
-        <button class="navbar-toggler bg-white" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-            <ul class="navbar-nav">
-                <li class="nav-item"><a class="nav-link nav-link-custom" href="#home">Início</a></li>
-                <li class="nav-item"><a class="nav-link nav-link-custom" href="#sobre">Sobre</a></li>
-                <li class="nav-item"><a class="nav-link nav-link-custom" href="#produtos">Produtos</a></li>
-                <li class="nav-item"><a class="nav-link nav-link-custom" href="#diferenciais">Diferenciais</a></li>
-                <li class="nav-item"><a class="nav-link nav-link-custom" href="#contato">Contato</a></li>
-            </ul>
-            <a href="#contato" class="btn btn-primary-custom ms-lg-3 mt-3 mt-lg-0">Fale Conosco</a>
-        </div>
-    </div>
-</nav>
-
-<!-- Hero Section -->
-<section id="home" class="hero-section">
-    <div class="container position-relative">
-        <div class="row align-items-center">
-            <div class="col-lg-6 mb-5 mb-lg-0">
-                <span class="badge-sport mb-3"><i class="fas fa-bolt me-1"></i> Desde 2023 | Alta Performance</span>
-                <h1 class="display-4 fw-bold mb-4">Sua evolução começa com <span class="text-primary">Slyce</span></h1>
-                <p class="lead mb-4 opacity-90">Artigos esportivos de elite para atletas reais. Equipamentos, vestuário e acessórios que potencializam cada movimento.</p>
-                <div class="d-flex flex-wrap gap-4 mb-4">
-                    <a href="#produtos" class="btn btn-primary-custom"><i class="fas fa-store me-2"></i> Conheça Nossos Produtos</a>
-                    <a href="#contato" class="btn btn-outline-custom"><i class="fas fa-headset me-2"></i> Atendimento Premium</a>
-                </div>
-                <div class="d-flex gap-4 flex-wrap">
-                    <div><i class="fas fa-truck-fast text-primary me-2"></i> Entregas para todo Brasil</div>
-                    <div><i class="fas fa-shield-alt text-primary me-2"></i> Garantia Slyce</div>
-                    <div><i class="fas fa-credit-card text-primary me-2"></i> Parcele em até 6x</div>
-                </div>
-            </div>
-            <div class="col-lg-6 text-center">
-                <div class="bg-white rounded-4 p-4 shadow-lg d-inline-block">
-                    <i class="fas fa-medal fa-5x text-primary mb-3"></i>
-                    <h3 class="text-dark">Equipamento Oficial</h3>
-                    <p class="text-secondary">Qualidade Profissional</p>
-                </div>
+    <!-- Barra de navegação responsiva -->
+    <nav class="navbar navbar-expand-lg navbar-custom sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <i class="bi bi-basketball"></i> Slyce<span>Sports</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain" aria-controls="navbarMain" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon" style="filter: invert(1);"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarMain">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0 gap-2">
+                    <li class="nav-item"><a class="nav-link" href="#inicio">Início</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#produtos">Destaques</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#sobre">Sobre</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contato">Contato</a></li>
+                </ul>
+                <a href="#contato" class="btn btn-slyce ms-lg-3">Comprar Agora <i class="bi bi-arrow-right-short"></i></a>
             </div>
         </div>
-    </div>
-</section>
+    </nav>
 
-<!-- Sobre + Dados da Empresa -->
-<section id="sobre" class="py-5">
-    <div class="container">
-        <div class="row g-4">
-            <div class="col-lg-6">
-                <div class="info-card">
-                    <div class="icon-circle">
-                        <i class="fas fa-building"></i>
+    <!-- Hero Section -->
+    <section id="inicio" class="hero">
+        <div class="container">
+            <div class="row align-items-center g-5">
+                <div class="col-lg-7">
+                    <span class="badge bg-warning text-dark mb-3 py-2 px-3 rounded-pill"><i class="bi bi-lightning-charge-fill"></i> Esporte de alto desempenho</span>
+                    <h1 class="display-4 fw-bold">Sua melhor jogada <br> começa na <span class="highlight">Slyce</span></h1>
+                    <p class="lead mt-3 opacity-75">Equipamentos originais, roupas técnicas e acessórios para elevar seu potencial. Tudo para atletas de verdade, do amador ao profissional.</p>
+                    <div class="d-flex flex-wrap gap-3 mt-4">
+                        <a href="#produtos" class="btn btn-slyce btn-lg px-4"><i class="bi bi-bag-check-fill"></i> Explorar coleção</a>
+                        <a href="#sobre" class="btn btn-outline-light-custom btn-lg"><i class="bi bi-info-circle"></i> Conheça a Slyce</a>
                     </div>
-                    <h3 class="fw-bold mb-3">Slyce Artigos Esportivos S.A.</h3>
-                    <p class="text-secondary mb-4">Inovação e qualidade para impulsionar sua jornada esportiva. Com DNA brasileiro e visão global, oferecemos produtos que unem tecnologia, design e performance extrema.</p>
-                    <hr>
-                    <div class="mt-3">
-                        <p><i class="fas fa-calendar-alt text-primary me-3"></i> <strong>Data Situação Cadastral:</strong> 02/10/2023</p>
-                        <p><i class="fas fa-id-card text-primary me-3"></i> <strong>CNPJ:</strong> 52.380.726/0001-09</p>
-                        <p><i class="fas fa-trademark text-primary me-3"></i> <strong>Razão Social:</strong> Slyce Artigos Esportivos S.A.</p>
-                        <p><i class="fas fa-store text-primary me-3"></i> <strong>Nome Fantasia:</strong> Slyce Artigos Esportivos S.a.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-6">
-                <div class="info-card">
-                    <div class="icon-circle">
-                        <i class="fas fa-map-marker-alt"></i>
-                    </div>
-                    <h3 class="fw-bold mb-4">Nossa Localização</h3>
-                    <div class="mb-4">
-                        <p class="mb-2"><i class="fas fa-location-dot text-primary me-2"></i> <strong>Matriz & Showroom</strong></p>
-                        <address class="ps-4">
-                            Avenida Nove de Julho, 5966<br>
-                            Bairro: Jardim Paulista<br>
-                            São Paulo - SP<br>
-                            CEP: 01406-902
-                        </address>
-                    </div>
-                    <div class="mt-3">
-                        <p><i class="fas fa-phone-alt text-primary me-3"></i> <strong>Telefone/WhatsApp:</strong> (11) 97160-2243</p>
-                        <p><i class="fas fa-envelope text-primary me-3"></i> <strong>E-mail:</strong> contato@slycesports.com.br</p>
-                    </div>
-                    <div class="mt-3 d-flex gap-2">
-                        <span class="badge bg-dark p-2"><i class="fab fa-instagram me-1"></i> @slycesports</span>
-                        <span class="badge bg-dark p-2"><i class="fab fa-facebook me-1"></i> /slyceoficial</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- Produtos em Destaque -->
-<section id="produtos" class="py-5 bg-white">
-    <div class="container">
-        <div class="text-center mb-5">
-            <span class="badge-sport bg-dark text-white"><i class="fas fa-star me-1"></i> Destaques</span>
-            <h2 class="section-title section-title-center mt-3">Produtos <span class="text-primary">Premium</span></h2>
-            <p class="text-muted mt-3">Os melhores equipamentos para você elevar seu nível</p>
-        </div>
-        <div class="row g-4">
-            <div class="col-md-6 col-lg-4">
-                <div class="product-card">
-                    <div class="product-img">
-                        <i class="fas fa-futbol"></i>
-                    </div>
-                    <div class="p-4">
-                        <h4 class="fw-bold">Chuteira Pro Strike</h4>
-                        <p class="text-muted">Sola com tração assimétrica, cabedal sintético respirável. Ideal para gramados naturais e sintéticos.</p>
-                        <div class="d-flex justify-content-between align-items-center">
-                            <span class="fw-bold text-primary fs-4">R$ 299,90</span>
-                            <div class="text-warning">
-                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
-                            </div>
+                    <div class="row mt-5 g-3">
+                        <div class="col-sm-4">
+                            <div class="d-flex align-items-center gap-2"><i class="bi bi-truck fs-3" style="color:#f7b32b;"></i> <span><strong>Frete Rápido</strong><br>para todo Brasil</span></div>
                         </div>
-                        <button class="btn btn-primary-custom w-100 mt-3" onclick="alert('Produto adicionado ao carrinho!')">Comprar Agora</button>
+                        <div class="col-sm-4">
+                            <div class="d-flex align-items-center gap-2"><i class="bi bi-shield-check fs-3" style="color:#f7b32b;"></i> <span><strong>Garantia Slyce</strong><br>Produtos 100% originais</span></div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="d-flex align-items-center gap-2"><i class="bi bi-credit-card fs-3" style="color:#f7b32b;"></i> <span><strong>Parcele em até 6x</strong><br>sem juros</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-5 text-center">
+                    <div class="bg-white bg-opacity-10 p-4 rounded-4 shadow-lg">
+                        <i class="bi bi-trophy-fill display-1 text-warning"></i>
+                        <h3 class="mt-3">#TeamSlyce</h3>
+                        <p class="mb-0">Mais de 2 mil atletas confiam na nossa performance.</p>
                     </div>
                 </div>
             </div>
-            <div class="col-md-6 col-lg-4">
-                <div class="product-card">
-                    <div class="product-img">
-                        <i class="fas fa-running"></i>
-                    </div>
-                    <div class="p-4">
-                        <h4 class="fw-bold">Kit Running Evolution</h4>
-                        <p class="text-muted">Camisa e short com tecnologia anti-odor, bolso para smartwatch e refletores noturnos.</p>
-                        <div class="d-flex justify-content-between align-items-center">
-                            <span class="fw-bold text-primary fs-4">R$ 189,90</span>
-                            <span class="badge bg-success">Frete Grátis</span>
-                        </div>
-                        <button class="btn btn-primary-custom w-100 mt-3" onclick="alert('Produto adicionado ao carrinho!')">Comprar Agora</button>
-                    </div>
-                </div>
+        </div>
+    </section>
+
+    <!-- Seção ícones / diferenciais -->
+    <div class="container py-5">
+        <div class="row text-center g-4">
+            <div class="col-md-3 col-6">
+                <div class="feature-icon mx-auto mb-3"><i class="bi bi-bicycle"></i></div>
+                <h5 class="fw-bold">Ciclismo</h5>
+                <p class="text-muted small">Capacetes, luvas e peças</p>
             </div>
-            <div class="col-md-6 col-lg-4">
-                <div class="product-card">
-                    <div class="product-img">
-                        <i class="fas fa-heartbeat"></i>
-                    </div>
-                    <div class="p-4">
-                        <h4 class="fw-bold">Acessórios Esportivos</h4>
-                        <p class="text-muted">Caneleiras, munhequeiras, squeeze térmico, mochila portátil Slyce — tudo pensado no seu conforto.</p>
-                        <div class="d-flex justify-content-between align-items-center">
-                            <span class="fw-bold text-primary fs-4">R$ 49,90</span>
-                            <span class="text-primary"><i class="fas fa-gift"></i> 10% OFF</span>
-                        </div>
-                        <button class="btn btn-primary-custom w-100 mt-3" onclick="alert('Produto adicionado ao carrinho!')">Ver Ofertas</button>
-                    </div>
-                </div>
+            <div class="col-md-3 col-6">
+                <div class="feature-icon mx-auto mb-3"><i class="bi bi-futbol"></i></div>
+                <h5 class="fw-bold">Futebol</h5>
+                <p class="text-muted small">Chuteiras, bolas e camisas</p>
+            </div>
+            <div class="col-md-3 col-6">
+                <div class="feature-icon mx-auto mb-3"><i class="bi bi-dumbbell"></i></div>
+                <h5 class="fw-bold">Musculação</h5>
+                <p class="text-muted small">Acessórios e vestuário</p>
+            </div>
+            <div class="col-md-3 col-6">
+                <div class="feature-icon mx-auto mb-3"><i class="bi bi-cup-straw"></i></div>
+                <h5 class="fw-bold">Nutrição</h5>
+                <p class="text-muted small">Suplementos e isotônicos</p>
             </div>
         </div>
     </div>
-</section>
 
-<!-- Diferenciais -->
-<section id="diferenciais" class="py-5 bg-light">
-    <div class="container">
-        <div class="text-center mb-5">
-            <span class="badge-sport"><i class="fas fa-medal me-1"></i> Por que escolher a Slyce</span>
-            <h2 class="section-title section-title-center mt-3">Diferenciais que <span class="text-primary">aceleram</span> o jogo</h2>
+    <!-- Destaques / produtos em grid -->
+    <section id="produtos" class="bg-soft-dark py-5">
+        <div class="container">
+            <div class="text-center mb-5">
+                <span class="text-uppercase text-warning fw-semibold">Coleção em alta</span>
+                <h2 class="section-title mt-2">Produtos que vão turbinar seu treino</h2>
+                <p class="text-muted mt-3">Seleção especial com os itens mais vendidos da temporada</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-4">
+                    <div class="card card-sport h-100 p-3">
+                        <div class="text-center p-2"><i class="bi bi-shoe-prints" style="font-size: 3rem; color: #f7b32b;"></i></div>
+                        <div class="card-body text-center">
+                            <h5 class="card-title fw-bold">Tênis HyperRun Pro</h5>
+                            <p class="card-text text-muted">Amortecimento responsivo e solado antiderrapante. Ideal para corrida e cross training.</p>
+                            <div class="fw-bold fs-5">R$ 349,90</div>
+                            <button class="btn btn-outline-dark rounded-pill mt-3 px-4"><i class="bi bi-cart-plus"></i> Comprar</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="card card-sport h-100 p-3">
+                        <div class="text-center p-2"><i class="bi bi-backpack" style="font-size: 3rem; color: #f7b32b;"></i></div>
+                        <div class="card-body text-center">
+                            <h5 class="card-title fw-bold">Mochila Esportiva Pro</h5>
+                            <p class="card-text text-muted">Compartimento para raquete, notebook e roupas. Design impermeável e alças ergonômicas.</p>
+                            <div class="fw-bold fs-5">R$ 189,90</div>
+                            <button class="btn btn-outline-dark rounded-pill mt-3 px-4"><i class="bi bi-cart-plus"></i> Comprar</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="card card-sport h-100 p-3">
+                        <div class="text-center p-2"><i class="bi bi-tshirt" style="font-size: 3rem; color: #f7b32b;"></i></div>
+                        <div class="card-body text-center">
+                            <h5 class="card-title fw-bold">Kit Dry Fit Tech</h5>
+                            <p class="card-text text-muted">Camisa + short com tecnologia antissuor, rápida secagem. Perfeito para academia e futebol.</p>
+                            <div class="fw-bold fs-5">R$ 149,90</div>
+                            <button class="btn btn-outline-dark rounded-pill mt-3 px-4"><i class="bi bi-cart-plus"></i> Comprar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center mt-5">
+                <a href="#" class="btn btn-slyce btn-lg px-5"><i class="bi bi-box-seam"></i> Ver catálogo completo</a>
+            </div>
         </div>
-        <div class="row g-4">
-            <div class="col-md-6 col-lg-3">
-                <div class="info-card text-center">
-                    <div class="icon-circle mx-auto">
-                        <i class="fas fa-dumbbell"></i>
-                    </div>
-                    <h4 class="fw-bold">Materiais Premium</h4>
-                    <p class="text-muted">Tecidos de alta durabilidade, reforço estratégico e máxima resistência</p>
-                </div>
-            </div>
-            <div class="col-md-6 col-lg-3">
-                <div class="info-card text-center">
-                    <div class="icon-circle mx-auto">
-                        <i class="fas fa-tachometer-alt"></i>
-                    </div>
-                    <h4 class="fw-bold">Performance Térmica</h4>
-                    <p class="text-muted">Dry-Fit e ventilação inteligente para máxima performance</p>
-                </div>
-            </div>
-            <div class="col-md-6 col-lg-3">
-                <div class="info-card text-center">
-                    <div class="icon-circle mx-auto">
-                        <i class="fas fa-globe-americas"></i>
-                    </div>
-                    <h4 class="fw-bold">Frete para todo BR</h4>
-                    <p class="text-muted">Envio rápido e seguro para todas as regiões do Brasil</p>
-                </div>
-            </div>
-            <div class="col-md-6 col-lg-3">
-                <div class="info-card text-center">
-                    <div class="icon-circle mx-auto">
-                        <i class="fas fa-headset"></i>
-                    </div>
-                    <h4 class="fw-bold">Suporte Especializado</h4>
-                    <p class="text-muted">Time de atendimento focado em solucionar suas dúvidas</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+    </section>
 
-<!-- Frase Inspiradora -->
-<section class="py-5">
-    <div class="container">
+    <!-- Informações da empresa + dados legais e institucional -->
+    <section id="sobre" class="py-5">
+        <div class="container">
+            <div class="row g-5 align-items-center">
+                <div class="col-md-6">
+                    <div class="info-card p-4 shadow-sm">
+                        <div class="d-flex align-items-center gap-2 mb-3">
+                            <i class="bi bi-building fs-1 text-warning"></i>
+                            <h3 class="mb-0 fw-bold">Slyce Artigos Esportivos S.A.</h3>
+                        </div>
+                        <hr class="my-3">
+                        <p><i class="bi bi-card-list me-2 text-warning"></i> <strong>Data Situação Cadastral:</strong> 02/10/2023</p>
+                        <p><i class="bi bi-qr-code me-2 text-warning"></i> <strong>CNPJ:</strong> 52.380.726/0001-09</p>
+                        <p><i class="bi bi-bank2 me-2 text-warning"></i> <strong>Razão Social:</strong> Slyce Artigos Esportivos S.a.</p>
+                        <p><i class="bi bi-trophy-fill me-2 text-warning"></i> <strong>Nome Fantasia:</strong> Slyce Artigos Esportivos S.a.</p>
+                        <div class="mt-3 p-3 rounded-3" style="background:#fef3e0;">
+                            <i class="bi bi-geo-alt-fill text-warning"></i> <strong>Matriz & Loja Física:</strong><br>
+                            Avenida Nove de Julho, 5966 - Jardim Paulista, São Paulo - SP, 01406-902
+                        </div>
+                        <div class="mt-3 d-flex gap-4">
+                            <div><i class="bi bi-telephone-fill text-warning"></i> (11) 97160-2243</div>
+                            <div><i class="bi bi-envelope-fill text-warning"></i> contato@slyceesportes.com.br</div>
+                        </div>
+                        <div class="mt-3 text-muted small">
+                            <i class="bi bi-clock-history"></i> Atendimento: segunda a sábado, 9h às 20h | Retirada na loja.
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="ps-lg-4">
+                        <span class="badge bg-warning text-dark mb-2 px-3 py-2">Nossa história</span>
+                        <h2 class="fw-bold">Mais que equipamentos, <br> <span class="text-warning">um estilo de vida</span></h2>
+                        <p class="lead mt-3">Fundada em 2023 com a missão de democratizar artigos esportivos de alta qualidade, a Slyce une tecnologia, conforto e design arrojado. Nossa sede em São Paulo abriga showroom e centro de distribuição próprio.</p>
+                        <p>Somos referência no varejo esportivo, atendendo desde atletas iniciantes até competidores experientes. Trabalhamos com marcas nacionais e internacionais, garantindo a melhor experiência de compra.</p>
+                        <div class="row g-3 mt-2">
+                            <div class="col-6"><i class="bi bi-check-circle-fill text-warning"></i> Pagamento seguro</div>
+                            <div class="col-6"><i class="bi bi-check-circle-fill text-warning"></i> Atendimento especializado</div>
+                            <div class="col-6"><i class="bi bi-check-circle-fill text-warning"></i> Troca rápida até 30 dias</div>
+                            <div class="col-6"><i class="bi bi-check-circle-fill text-warning"></i> Fidelidade Slyce Clube</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Frases motivacionais / carousel ou quote -->
+    <div class="container py-4">
         <div class="row justify-content-center">
-            <div class="col-lg-8 text-center">
-                <div class="info-card p-5">
-                    <i class="fas fa-quote-left fa-3x text-primary opacity-50 mb-3"></i>
-                    <p class="fs-3 fw-semibold fst-italic">"Mais que artigos esportivos, uma nova forma de sentir o esporte. Performance, estilo e inovação em cada detalhe."</p>
-                    <p class="text-primary fw-bold mt-3">— Equipe Slyce</p>
-                </div>
+            <div class="col-lg-9 text-center p-4 bg-white rounded-4 shadow-sm border-start border-warning border-5">
+                <i class="bi bi-quote fs-1 text-warning"></i>
+                <p class="fs-4 fst-italic mt-2">"O esporte nos ensina mais do que vencer; ensina a superar limites. Na Slyce, cada artigo é uma ferramenta para a sua melhor versão."</p>
+                <footer class="blockquote-footer mt-2">— Equipe Slyce, desde 2023</footer>
             </div>
         </div>
     </div>
-</section>
 
-<!-- Contato -->
-<section id="contato" class="py-5" style="background: linear-gradient(135deg, #0F172A 0%, #1E293B 100%);">
-    <div class="container">
-        <div class="row g-5">
-            <div class="col-lg-5 text-white">
-                <h2 class="fw-bold display-5 mb-4">Vamos <span class="text-primary">acelerar</span> seu jogo?</h2>
-                <p class="lead mb-4">Estamos prontos para receber atletas e entusiastas. Entre em contato, visite nossa loja física ou adquira online com segurança.</p>
-                <ul class="list-unstyled">
-                    <li class="mb-3"><i class="fas fa-check-circle text-primary me-2"></i> Atendimento personalizado</li>
-                    <li class="mb-3"><i class="fas fa-check-circle text-primary me-2"></i> Teste de produtos no showroom</li>
-                    <li class="mb-3"><i class="fas fa-check-circle text-primary me-2"></i> Parcelamento em até 6x sem juros</li>
-                </ul>
-                <div class="mt-4">
-                    <a href="https://wa.me/5511971602243" target="_blank" class="btn btn-primary-custom btn-lg me-3 mb-2">
-                        <i class="fab fa-whatsapp me-2"></i> (11) 97160-2243
-                    </a>
-                </div>
+    <!-- Contato e mapa interativo + localização completa -->
+    <section id="contato" class="py-5 bg-soft-dark">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="section-title">Fale com a Slyce</h2>
+                <p class="text-muted mt-3">Estamos prontos para atender você por telefone, e-mail ou presencialmente na Avenida Nove de Julho</p>
             </div>
-            <div class="col-lg-7">
-                <div class="info-card p-4 p-md-5">
-                    <h3 class="fw-bold mb-4"><i class="fas fa-envelope-open-text text-primary me-2"></i> Fale com a Slyce</h3>
-                    <form id="contactForm">
-                        <div class="row g-3">
-                            <div class="col-md-6">
-                                <label class="form-label fw-semibold">Nome completo *</label>
-                                <input type="text" id="nome" class="form-control form-control-lg" placeholder="Seu nome" required>
-                            </div>
-                            <div class="col-md-6">
-                                <label class="form-label fw-semibold">E-mail *</label>
-                                <input type="email" id="email" class="form-control form-control-lg" placeholder="exemplo@email.com" required>
-                            </div>
-                            <div class="col-12">
-                                <label class="form-label fw-semibold">Mensagem *</label>
-                                <textarea id="mensagem" rows="3" class="form-control" placeholder="Qual esporte você pratica? Gostaria de saber sobre..." required></textarea>
-                            </div>
-                            <div class="col-12">
-                                <button type="submit" class="btn btn-primary-custom w-100 py-3 fw-bold">
-                                    <i class="fas fa-paper-plane me-2"></i> Enviar mensagem
-                                </button>
-                            </div>
+            <div class="row g-4">
+                <div class="col-md-5">
+                    <div class="bg-white p-4 rounded-4 shadow-sm h-100">
+                        <h4><i class="bi bi-headset text-warning"></i> Canal direto</h4>
+                        <ul class="list-unstyled mt-3 contact-info">
+                            <li class="mb-3"><i class="bi bi-whatsapp"></i> <strong>WhatsApp:</strong> (11) 97160-2243</li>
+                            <li class="mb-3"><i class="bi bi-envelope-paper"></i> <strong>E-mail:</strong> sac@slycesports.com.br</li>
+                            <li class="mb-3"><i class="bi bi-geo-alt"></i> <strong>Endereço físico:</strong> Av. Nove de Julho, 5966 - Jardim Paulista, SP - CEP 01406-902</li>
+                            <li class="mb-3"><i class="bi bi-calendar-check"></i> <strong>Horário de funcionamento:</strong> Seg-Sex 9h-19h, Sáb 9h-15h</li>
+                        </ul>
+                        <div class="alert alert-warning bg-warning bg-opacity-10 border-0">
+                            <i class="bi bi-truck"></i> Compras online com entrega em todo Brasil. Retire em até 2h na loja física!
                         </div>
-                    </form>
-                    <hr class="my-4">
-                    <div class="d-flex justify-content-between flex-wrap">
-                        <span><i class="far fa-clock text-primary me-1"></i> Seg-Sex: 9h às 19h | Sáb: 9h às 14h</span>
-                        <span><i class="fas fa-map-marker-alt text-primary me-1"></i> Av. Nove de Julho, 5966 - Jardim Paulista</span>
+                    </div>
+                </div>
+                <div class="col-md-7">
+                    <div class="bg-white p-4 rounded-4 shadow-sm h-100">
+                        <h4><i class="bi bi-pin-map-fill text-warning"></i> Localização estratégica</h4>
+                        <div class="ratio ratio-16x9 mt-3 rounded-3 overflow-hidden">
+                            <!-- Mapa estático do Google Maps (embed) mostrando exatamente a Av Nove de Julho, 5966 - aberto para visualização -->
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3657.328977057664!2d-46.6658539!3d-23.5631923!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce59d049586a6f%3A0x55a1d5ff0787f5bd!2sAv.%20Nove%20de%20Julho%2C%205966%20-%20Jardim%20Paulista%2C%20S%C3%A3o%20Paulo%20-%20SP%2C%2001406-902!5e0!3m2!1spt-BR!2sbr!4v1711748151227!5m2!1spt-BR!2sbr" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        </div>
+                        <p class="mt-3 text-muted small"><i class="bi bi-bus-front"></i> Próximo às estações Trianon-Masp e estacionamento conveniado.</p>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
-<!-- Footer -->
-<footer class="pt-5 pb-4">
-    <div class="container">
-        <div class="row gy-4">
-            <div class="col-md-5">
-                <div class="d-flex align-items-center gap-2 mb-3">
-                    <i class="fas fa-futbol fs-2 text-primary"></i>
-                    <span class="fw-bold fs-3 text-white">Slyce<span class="text-primary">Sports</span></span>
+    <!-- Frase/rodapé com ícones e direitos autorais e informações legais repetidas -->
+    <footer class="pt-5 pb-4">
+        <div class="container">
+            <div class="row gy-4">
+                <div class="col-md-4">
+                    <div class="d-flex align-items-center gap-2 mb-3">
+                        <i class="bi bi-basketball fs-2 text-warning"></i>
+                        <span class="fs-3 fw-bold text-white">SlyceSports</span>
+                    </div>
+                    <p class="text-white-50">Artigos esportivos com tecnologia e paixão pelo esporte. Transforme seu treino com a Slyce.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="bi bi-instagram"></i></a>
+                        <a href="#"><i class="bi bi-twitter-x"></i></a>
+                        <a href="#"><i class="bi bi-facebook"></i></a>
+                        <a href="#"><i class="bi bi-tiktok"></i></a>
+                    </div>
                 </div>
-                <p class="mb-3">Equipamentos que unem tecnologia, design e amor pelo esporte. Slyce Artigos Esportivos S.A. — energia que move atletas.</p>
-                <p class="mb-1"><i class="fas fa-registered me-1"></i> CNPJ: 52.380.726/0001-09</p>
-                <p><i class="fas fa-map-pin me-1"></i> Av. Nove de Julho, 5966 - Jardim Paulista, SP</p>
-            </div>
-            <div class="col-md-3">
-                <h5 class="text-white fw-semibold mb-3">Links Rápidos</h5>
-                <ul class="list-unstyled">
-                    <li class="mb-2"><a href="#home" class="text-secondary text-decoration-none">Início</a></li>
-                    <li class="mb-2"><a href="#sobre" class="text-secondary text-decoration-none">Sobre a Slyce</a></li>
-                    <li class="mb-2"><a href="#produtos" class="text-secondary text-decoration-none">Produtos</a></li>
-                    <li class="mb-2"><a href="#contato" class="text-secondary text-decoration-none">Contato</a></li>
-                </ul>
-            </div>
-            <div class="col-md-4">
-                <h5 class="text-white fw-semibold mb-3">Atendimento</h5>
-                <p><i class="fab fa-whatsapp text-success me-2"></i> (11) 97160-2243 (WhatsApp)</p>
-                <p><i class="fas fa-envelope me-2 text-primary"></i> sac@slycesports.com.br</p>
-                <div class="mt-3 d-flex gap-3">
-                    <a href="#" class="text-white fs-4"><i class="fab fa-instagram"></i></a>
-                    <a href="#" class="text-white fs-4"><i class="fab fa-facebook"></i></a>
-                    <a href="#" class="text-white fs-4"><i class="fab fa-twitter"></i></a>
+                <div class="col-md-3">
+                    <h5 class="text-white">Institucional</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="#" class="text-white-50 text-decoration-none">Sobre a Slyce</a></li>
+                        <li class="mb-2"><a href="#" class="text-white-50 text-decoration-none">Trabalhe Conosco</a></li>
+                        <li class="mb-2"><a href="#" class="text-white-50 text-decoration-none">Política de privacidade</a></li>
+                        <li class="mb-2"><a href="#" class="text-white-50 text-decoration-none">Termos de uso</a></li>
+                    </ul>
                 </div>
+                <div class="col-md-5">
+                    <h5 class="text-white"><i class="bi bi-envelope-paper-fill text-warning"></i> Newsletter</h5>
+                    <p class="text-white-50">Receba ofertas exclusivas e novidades do mundo esportivo.</p>
+                    <div class="input-group">
+                        <input type="email" class="form-control bg-dark border-secondary text-white" placeholder="Seu melhor e-mail">
+                        <button class="btn btn-warning" type="button">Cadastrar</button>
+                    </div>
+                    <p class="small text-white-50 mt-3">CNPJ: 52.380.726/0001-09 – Slyce Artigos Esportivos S.A. – Todos os direitos reservados.</p>
+                </div>
+            </div>
+            <hr class="mt-4 border-secondary">
+            <div class="text-center text-white-50 small">
+                © 2025 Slyce Artigos Esportivos S.A. | Av. Nove de Julho, 5966 - Jardim Paulista | (11) 97160-2243
             </div>
         </div>
-        <hr class="bg-secondary mt-4">
-        <div class="text-center text-secondary small pt-2">
-            © 2025 Slyce Artigos Esportivos S.A. | Todos os direitos reservados | Data de registro: 02/10/2023
-        </div>
-    </div>
-</footer>
+    </footer>
 
-<!-- Bootstrap JS -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-<script>
-    // Navbar scroll effect
-    window.addEventListener('scroll', function() {
-        const navbar = document.querySelector('.navbar-custom');
-        if (window.scrollY > 50) {
-            navbar.classList.add('scrolled');
-        } else {
-            navbar.classList.remove('scrolled');
-        }
-    });
-    
-    // Smooth scroll
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
-            const href = this.getAttribute('href');
-            if(href !== "#" && href !== "#!" && href !== "") {
-                const target = document.querySelector(href);
-                if(target) {
-                    e.preventDefault();
-                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                }
-            }
-        });
-    });
-    
-    // Form submit alert
-    document.getElementById('contactForm').addEventListener('submit', function(e) {
-        e.preventDefault();
-        alert('✅ Mensagem enviada com sucesso!\n\nEm breve nosso time retornará. Obrigado, Slyce Sports!');
-        this.reset();
-    });
-</script>
+    <!-- Bootstrap JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
