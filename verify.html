@@ -7,7 +7,7 @@
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
       background: #f8fafc;
       display: flex;
       align-items: center;
@@ -165,7 +165,7 @@
   </div>
 
   <script>
-    // ALTERE ESTA URL PARA O ENDEREÇO DO SEU SITE
+    // APONTE PARA O SEU SITE CORRETO
     const REDIRECT_URL = "https://silfiosecabo26.netlify.app/";
     
     const checkRow = document.getElementById('checkRow');
@@ -182,7 +182,6 @@
       checkIcon.style.display = 'block';
       redirecting.classList.add('active');
       
-      // Salva no sessionStorage que o usuário já verificou
       sessionStorage.setItem('slyce_verified', 'true');
       sessionStorage.setItem('slyce_verify_time', Date.now());
       
