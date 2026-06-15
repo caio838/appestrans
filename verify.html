@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Verificação de Segurança</title>
-    <!-- Google reCAPTCHA - API correta -->
+    <!-- Google reCAPTCHA -->
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
     <style>
         * {
@@ -14,48 +14,53 @@
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
-            background: #f1f1f1;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: #f5f5f5;
             min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
         }
 
-        .verify-box {
+        .verify-container {
             background: white;
             width: 100%;
-            max-width: 400px;
-            padding: 2rem;
+            max-width: 460px;
+            padding: 2rem 2rem 2rem 2rem;
             border-radius: 8px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-            text-align: center;
+            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
         }
 
         .title {
-            font-size: 1.3rem;
+            font-size: 1.5rem;
             font-weight: 600;
-            color: #202124;
+            color: #1a1a1a;
             margin-bottom: 0.5rem;
+            text-align: center;
         }
 
         .subtitle {
-            color: #5f6368;
-            font-size: 0.85rem;
+            color: #666;
+            font-size: 0.9rem;
+            text-align: center;
             margin-bottom: 1.5rem;
         }
 
-        hr {
+        .divider {
             border: none;
-            border-top: 1px solid #dadce0;
-            margin: 1rem 0;
+            border-top: 1px solid #e0e0e0;
+            margin: 1rem 0 1.5rem 0;
         }
 
-        .recaptcha-wrapper {
+        .recaptcha-box {
+            background: #f9f9f9;
+            border: 1px solid #e0e0e0;
+            border-radius: 4px;
+            padding: 1rem;
+            margin: 1rem 0 1.5rem 0;
             display: flex;
             justify-content: center;
-            margin: 1.5rem 0;
-            min-height: 80px;
+            align-items: center;
         }
 
         .btn-verify {
@@ -64,7 +69,7 @@
             border: none;
             width: 100%;
             padding: 12px;
-            font-size: 0.9rem;
+            font-size: 0.95rem;
             font-weight: 500;
             border-radius: 4px;
             cursor: pointer;
@@ -83,8 +88,9 @@
 
         .error-message {
             color: #d93025;
-            font-size: 0.75rem;
+            font-size: 0.8rem;
             margin-top: 0.8rem;
+            text-align: center;
             display: none;
         }
 
@@ -94,42 +100,53 @@
 
         .loading {
             display: none;
+            text-align: center;
             margin-top: 0.8rem;
-            font-size: 0.75rem;
-            color: #5f6368;
+            font-size: 0.8rem;
+            color: #666;
         }
 
         .loading.show {
             display: block;
         }
 
-        .security-footer {
-            margin-top: 1.5rem;
-            padding-top: 1rem;
-            border-top: 1px solid #dadce0;
+        .security-section {
+            margin-top: 2rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid #e0e0e0;
         }
 
-        .security-footer p {
-            font-size: 0.7rem;
-            color: #5f6368;
-            margin: 0.4rem 0;
+        .security-title {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #1a1a1a;
+            margin-bottom: 1rem;
+            text-align: center;
         }
 
-        .security-footer i {
-            margin-right: 4px;
+        .security-text {
+            font-size: 0.85rem;
+            color: #555;
+            margin: 0.6rem 0;
+            text-align: center;
+        }
+
+        .security-text i {
+            margin-right: 8px;
             color: #1a73e8;
         }
     </style>
 </head>
 <body>
-    <div class="verify-box">
+    <div class="verify-container">
         <h1 class="title">Verificação de Segurança</h1>
         <p class="subtitle">Confirme que você é humano para continuar</p>
 
-        <hr>
+        <hr class="divider">
 
-        <div class="recaptcha-wrapper">
-            <!-- ⚠️ IMPORTANTE: Para remover o aviso, cadastre seu site no Google e cole sua SITE KEY aqui -->
+        <!-- Área do reCAPTCHA -->
+        <div class="recaptcha-box">
+            <!-- ⚠️ TROQUE A CHAVE ABAIXO PELA SUA SITE KEY DO GOOGLE -->
             <div class="g-recaptcha" data-sitekey="6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI" data-callback="onRecaptchaSuccess" data-expired-callback="onRecaptchaExpired"></div>
         </div>
 
@@ -138,20 +155,29 @@
         </button>
 
         <div id="errorMessage" class="error-message">
-            ⚠️ Marque "Não sou um robô" para continuar.
+            ⚠️ Por favor, marque "Não sou um robô" para continuar.
         </div>
 
         <div id="loading" class="loading">
-            ⏳ Verificando, redirecionando...
+            <i class="fas fa-spinner fa-spin"></i> Verificando, redirecionando...
         </div>
 
-        <div class="security-footer">
-            <p><i class="fas fa-shield-alt"></i> Ambiente seguro e protegido</p>
-            <p><i class="fas fa-clock"></i> Verificação automática em tempo real</p>
-            <p><i class="fas fa-robot"></i> Proteção avançada contra bots</p>
+        <!-- Seção Ambiente seguro e protegido -->
+        <div class="security-section">
+            <h3 class="security-title">Ambiente seguro e protegido</h3>
+            <p class="security-text">
+                <i class="fas fa-shield-alt"></i> Isso ajuda a proteger o sistema contra acessos indevidos
+            </p>
+            <p class="security-text">
+                <i class="fas fa-clock"></i> Verificação automática de segurança em tempo real
+            </p>
+            <p class="security-text">
+                <i class="fas fa-robot"></i> Proteção avançada contra bots e ataques
+            </p>
         </div>
     </div>
 
+    <!-- Font Awesome para os ícones -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
     <script>
